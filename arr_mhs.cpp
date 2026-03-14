@@ -53,45 +53,48 @@ int main() {
     
     priority_queue<list_todo> list_pq;
     
-    while (choice == 'T'){
+    while (choice != 'E'){
         
-        cout << "Tambah berapa tugas?\n";
-        int n; cin >> n;
-        
-        for(int i = 0; i < n; i++){
-            cout << "Masukkan nama tugas: ";
-            string T;
-            getline(cin >> ws, T);
+        if(choice == 'T'){
+            cout << "Tambah berapa tugas?\n";
+            int n; cin >> n;
             
-            cout << "Berikan skala prioritas" << "\n" << "(Urutan dengan nilai tertinggi akan berada pada urutan teratas): ";
-            
-            int P;
-            cin >> P;
-            
-            list_pq.push({P, T});     
+            for(int i = 0; i < n; i++){
+                cout << "Masukkan nama tugas: ";
+                string T;
+                getline(cin >> ws, T);
+                
+                cout << "Berikan skala prioritas" << "\n" << "(Urutan dengan nilai tertinggi akan berada pada urutan teratas): ";
+                
+                int P;
+                cin >> P;
+                
+                list_pq.push({P, T});     
+            }  
         }
-        
-        cout << "Sekarang mau apa?\n" << "L: Tampilkan list tugas" << "\n" << "T: Tambahkan tugas" << "\n" << "D: Hapus urutan tugas teratas" << "\n" << "E: Exit" << "\n";
-        cin >> choice;
-        
-        priority_queue<list_todo> pq_copy = list_pq;
+       
         
         if(choice == 'L'){
+            
+            priority_queue<list_todo> pq_copy = list_pq;
+            
             while(!pq_copy.empty()){
                 cout << pq_copy.top().str << " | ";
                 cout << pq_copy.top().priority;
                 cout << "\n";
                 pq_copy.pop();
             }
-            cout << "Sekarang mau apa?\n" << "L: Tampilkan list tugas" << "\n" << "T: Tambahkan tugas" << "\n" << "D: Hapus urutan tugas teratas" << "\n" << "E: Exit" << "\n";
-            cin >> choice;
+            
         }
         
-        if(choice == 'D'){
+        if (choice == 'D'){
             list_pq.pop();
-            cout << "Sekarang mau apa?\n" << "L: Tampilkan list tugas" << "\n" << "T: Tambahkan tugas" << "\n" << "D: Hapus urutan tugas teratas" << "\n" << "E: Exit" << "\n";
             cin >> choice;
         }
+       
+        cout << "Sekarang mau apa?\n" << "L: Tampilkan list tugas" << "\n" << "T: Tambahkan tugas" << "\n" << "D: Hapus urutan tugas teratas" << "\n" << "E: Exit" << "\n";
+        cin >> choice;
+        
     }
     
     
