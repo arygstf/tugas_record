@@ -53,7 +53,7 @@ int main() {
     
     priority_queue<list_todo> list_pq;
     
-    (choice == 'T'){
+    if (choice == 'T'){
         
         cout << "Tambah berapa tugas?\n";
         int n; cin >> n;
